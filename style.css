@@ -1,0 +1,299 @@
+body{
+    background:#f4f7fc;
+    font-family:Arial, sans-serif;
+}
+
+/* Sidebar */
+
+.sidebar{
+    min-height:100vh;
+    background:#1e293b;
+}
+
+.sidebar h3{
+    color:white;
+}
+
+.sidebar .nav-link{
+    color:#cbd5e1;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:8px;
+}
+
+.sidebar .nav-link:hover{
+    background:#334155;
+    color:white;
+}
+
+.active-link{
+    background:#2563eb;
+    color:white !important;
+}
+
+/* Cards */
+
+.card{
+    border-radius:15px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+/* Table */
+
+.table{
+    vertical-align:middle;
+}
+
+/* Button */
+
+.btn{
+    border-radius:8px;
+}
+.dark-mode{
+background:#121212;
+color:white;
+}
+
+.dark-mode .card{
+background:#1f1f1f;
+color:white;
+}
+
+.dark-mode .table{
+color:white;
+}
+/* Modal */
+
+.modal-content{
+    border-radius:15px;
+}
+
+.modal-header{
+    border-top-left-radius:15px;
+    border-top-right-radius:15px;
+}
+
+.modal-body{
+    padding:25px;
+}
+
+.form-control,
+.form-select{
+    border-radius:10px;
+    padding:10px;
+}
+
+.form-label{
+    font-weight:600;
+}
+.modal.fade .modal-dialog{
+    transition:transform .3s ease-out;
+}
+.modal-content{
+    border:none;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.modal-header{
+    background:#0d6efd;
+    color:white;
+}
+
+.modal-body{
+    padding:25px;
+}
+.dashboard-card{
+    border:none;
+    border-radius:20px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.dashboard-card:hover{
+    transform:translateY(-5px);
+}
+
+.icon-circle{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+}
+
+.dashboard-card h1{
+    font-size:48px;
+    font-weight:bold;
+}
+body{
+    background:#f4f7fc;
+}
+
+.sidebar{
+    min-height:100vh;
+    background:#1e293b;
+}
+
+.sidebar h3{
+    color:white;
+}
+
+.sidebar .nav-link{
+    color:#cbd5e1;
+    padding:12px;
+    border-radius:8px;
+}
+
+.sidebar .nav-link:hover{
+    background:#334155;
+    color:white;
+}
+
+.active-link{
+    background:#2563eb;
+    color:white !important;
+}
+
+.card{
+    border:none;
+    border-radius:15px;
+}
+.dashboard-card{
+    border:none;
+    border-radius:20px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.dashboard-card:hover{
+    transform:translateY(-5px);
+}
+
+.dashboard-card h1{
+    font-size:40px;
+    font-weight:bold;
+}
+.stat-card{
+    border-radius:20px;
+    background:#fff;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.stat-card:hover{
+    transform:translateY(-5px);
+}
+
+.icon-box{
+    width:55px;
+    height:55px;
+    border-radius:15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-size:24px;
+}
+
+.table{
+    vertical-align:middle;
+}
+
+.card{
+    border-radius:20px;
+}
+.form-control{
+    border-radius:10px;
+}
+
+.card{
+    border:none;
+    border-radius:15px;
+}
+
+.progress{
+    height:25px;
+    border-radius:20px;
+}
+
+.progress-bar{
+    font-weight:bold;
+}
+canvas{
+    width:100% !important;
+}
+
+.card{
+    border-radius:15px;
+}
+
+.card-body h5{
+    font-weight:600;
+}
+canvas{
+    max-height:300px !important;
+}
+
+.chart-card{
+    height:380px;
+}
+.chart-card{
+    height:350px;
+}
+
+.chart-card canvas{
+    max-height:280px !important;
+}
+/* DARK MODE */
+
+.dark-mode{
+    background:#121212 !important;
+    color:white !important;
+}
+
+.dark-mode .sidebar{
+    background:#0f172a !important;
+}
+
+.dark-mode .card{
+    background:#1e293b !important;
+    color:white !important;
+}
+
+.dark-mode .table{
+    color:white !important;
+}
+
+.dark-mode .table-dark{
+    background:#111827 !important;
+}
+
+.dark-mode .form-control,
+.dark-mode .form-select{
+    background:#334155;
+    color:white;
+    border:none;
+}
+
+.dark-mode .form-control::placeholder{
+    color:#cbd5e1;
+}
+
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode h5,
+.dark-mode h6,
+.dark-mode p,
+.dark-mode label{
+    color:white !important;
+}

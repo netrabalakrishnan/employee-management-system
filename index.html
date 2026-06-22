@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Sidebar -->
+            <div class="col-md-2 sidebar p-3">
+
+                <h3 class="text-center mb-4">EMS</h3>
+
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a href="home.html" class="nav-link">
+                            <i class="bi bi-house-fill"></i>
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link active-link">
+                            Dashboard
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="employees.html" class="nav-link">
+                            Employees
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="departments.html" class="nav-link">
+                            Departments
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="attendance.html" class="nav-link">
+                            Attendance
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="reports.html" class="nav-link">
+                            Reports
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3">
+
+<button
+id="darkModeBtn"
+class="btn btn-warning w-100">
+
+🌙 Dark Mode
+
+</button>
+
+</li>
+
+                </ul>
+               
+
+                <div id="announcementCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+
+                    <div class="carousel-inner">
+
+                        <div class="carousel-item active">
+
+                            <div class="alert alert-primary text-center">
+
+                                🎉 Annual Meeting on Friday
+
+                            </div>
+
+                        </div>
+
+                        <div class="carousel-item">
+
+                            <div class="alert alert-success text-center">
+
+                                🏆 Best Employee Awards Coming Soon
+
+                            </div>
+
+                        </div>
+
+                        <div class="carousel-item">
+
+                            <div class="alert alert-warning text-center">
+
+                                📢 Submit Monthly Reports
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- Main Content -->
+            <div class="col-md-10 p-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+
+                    <h2>Employee Dashboard</h2>
+
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#employeeModal">
+
+                        <i class="bi bi-person-plus-fill"></i>
+                        Add Employee
+
+                    </button>
+
+                </div>
+                <div class="row g-4">
+
+                    <div class="col-md-3">
+                        <div class="card bg-primary text-white shadow">
+                            <div class="card-body">
+                                <h6>Total Employees</h6>
+                                <h2 id="totalEmployees">0</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-success text-white shadow">
+                            <div class="card-body">
+                                <h6>Departments</h6>
+                                <h2 id="totalDepartments">0</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card bg-warning shadow">
+                            <div class="card-body">
+                                <h6>Present Today</h6>
+                                <h2 id="presentCount">0</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card bg-danger text-white shadow">
+                            <div class="card-body">
+                                <h6>On Leave</h6>
+                                <h2 id="leaveCount">0</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-5 shadow-sm border-0">
+
+                    <div class="card-body">
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="searchEmployee"
+                                    placeholder="Search Employee">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="card mt-4 shadow-sm border-0">
+
+                    <div class="card-body">
+
+                        <h4 class="mb-3">Employee List</h4>
+
+                        <div class="table-responsive">
+
+                            <table class="table table-hover">
+
+                                <thead class="table-dark">
+
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Department</th>
+                                        <th>Email</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+
+                                </thead>
+
+                                <tbody id="employeeTable">
+
+
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal fade" id="employeeModal">
+
+                    <div class="modal-dialog modal-lg">
+
+                        <div class="modal-content">
+
+                            <div class="modal-header bg-primary text-white">
+
+                                <h5 class="modal-title">
+                                    Add Employee
+                                </h5>
+
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal">
+                                </button>
+
+                            </div>
+
+                            <div class="modal-body">
+
+                                <form id="addEmployeeForm">
+
+                                    <div class="row">
+
+                                        <div class="col-md-6 mb-3">
+
+                                            <label>Name</label>
+
+                                            <input type="text" class="form-control" id="empName" required>
+
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+
+                                            <label>Email</label>
+
+                                            <input type="email" class="form-control" id="empEmail" required>
+
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+
+                                            <label>Department</label>
+
+                                            <select class="form-select" id="empDepartment">
+
+                                                <option>HR</option>
+                                                <option>IT</option>
+                                                <option>Finance</option>
+                                                <option>Marketing</option>
+
+                                            </select>
+
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+
+                                            <label>Status</label>
+
+                                            <select class="form-select" id="empStatus">
+
+                                                <option>Active</option>
+                                                <option>Inactive</option>
+
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+                                </form>
+
+                            </div>
+
+                            <div class="modal-footer">
+
+                                <button class="btn btn-secondary" data-bs-dismiss="modal">
+
+                                    Close
+
+                                </button>
+
+                                <button class="btn btn-success" id="saveEmployee">
+
+                                    Save Employee
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <script>
+
+                    const darkBtn =
+                        document.getElementById("darkModeBtn");
+
+                    darkBtn.addEventListener("click", () => {
+
+                        document.body.classList.toggle("dark-mode");
+
+                    });
+
+                </script>
+                <script>
+
+                    (() => {
+
+                        'use strict';
+
+                        const forms =
+                            document.querySelectorAll('.needs-validation');
+
+                        Array.from(forms).forEach(form => {
+
+                            form.addEventListener('submit', event => {
+
+                                if (!form.checkValidity()) {
+
+                                    event.preventDefault();
+                                    event.stopPropagation();
+
+                                }
+
+                                form.classList.add('was-validated');
+
+                            }, false);
+
+                        });
+
+                    })();
+
+                </script>
+
+                <script src="data.js"></script>
+                <script>
+
+                    let employees =
+                        JSON.parse(
+                            localStorage.getItem("employees")
+                        );
+
+                </script>
+                <script>
+
+                    window.onload = function () {
+
+                        const table =
+                            document.getElementById("employeeTable");
+
+                        employees.forEach(emp => {
+
+                            table.innerHTML += `
+
+<tr>
+
+<td>${emp.id}</td>
+
+<td>${emp.name}</td>
+
+<td>${emp.department}</td>
+
+<td>${emp.email}</td>
+
+<td>
+
+<span class="badge ${emp.status === "Active"
+                                    ? "bg-success"
+                                    : "bg-danger"
+                                }">
+
+${emp.status}
+
+</span>
+
+</td>
+
+<td>
+
+<button class="btn btn-warning btn-sm editBtn">
+Edit
+</button>
+
+<button class="btn btn-danger btn-sm">
+Delete
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+                        });
+
+                    };
+
+                </script>
+
+                <script>
+
+
+
+                    document.getElementById("totalEmployees").innerText =
+                        employees.length;
+
+                    document.getElementById("addEmployeeForm").reset();
+                    document.getElementById("totalDepartments").innerText =
+                        departments.length;
+
+                    let presentToday =
+                        employees.filter(emp =>
+                            emp.status === "Active"
+                        ).length;
+
+                    let onLeave =
+                        employees.filter(emp =>
+                            emp.status === "Inactive"
+                        ).length;
+
+                    document.getElementById("presentCount").innerText =
+                        presentToday;
+
+                    document.getElementById("leaveCount").innerText =
+                        onLeave;
+                </script>
+<script src="theme.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+                <script>
+
+
+                </script>
+
+
+
+
+
+
+                <script>
+
+                    document
+                        .getElementById("searchEmployee")
+                        .addEventListener("keyup", function () {
+
+                            let value =
+                                this.value.toLowerCase();
+
+                            let rows =
+                                document.querySelectorAll(
+                                    "#employeeTable tr"
+                                );
+
+                            rows.forEach(row => {
+
+                                row.style.display =
+                                    row.innerText
+                                        .toLowerCase()
+                                        .includes(value)
+                                        ?
+                                        ""
+                                        :
+                                        "none";
+
+                            });
+
+                        });
+
+                </script>
+                <script>
+
+                    document.addEventListener("click", function (e) {
+
+                        if (e.target.classList.contains("btn-danger")) {
+
+                            if (confirm("Delete this employee?")) {
+
+                                let row =
+                                    e.target.closest("tr");
+
+                                let id =
+                                    row.cells[0].innerText;
+
+                                employees =
+                                    employees.filter(emp =>
+                                        emp.id !== id
+                                    );
+
+                                localStorage.setItem(
+                                    "employees",
+                                    JSON.stringify(employees)
+                                );
+
+                                row.remove();
+
+                                document.getElementById("totalEmployees")
+                                    .innerText = employees.length;
+
+                            }
+
+                        }
+
+                    });
+
+                </script>
+
+                <script>
+                    let currentRow = null;
+                    document.addEventListener("click", function (e) {
+
+                        if (e.target.classList.contains("editBtn")) {
+
+                            currentRow = e.target.closest("tr");
+
+                            const cells = currentRow.cells;
+
+                            document.getElementById("empName").value =
+                                cells[1].innerText;
+
+                            document.getElementById("empDepartment").value =
+                                cells[2].innerText;
+
+                            document.getElementById("empEmail").value =
+                                cells[3].innerText;
+
+                            document.getElementById("empStatus").value =
+                                cells[4].innerText.trim();
+
+                            document.getElementById("saveEmployee").innerText =
+                                "Update Employee";
+
+                            const modal = new bootstrap.Modal(
+                                document.getElementById("employeeModal")
+                            );
+
+                            modal.show();
+                        }
+
+                    });
+
+                </script>
+                <script>
+
+                    let employeeCount = employees.length;
+
+
+
+                    document
+                        .getElementById("saveEmployee")
+                        .addEventListener("click", function () {
+
+                            const name =
+                                document.getElementById("empName").value;
+
+                            const email =
+                                document.getElementById("empEmail").value;
+
+                            const department =
+                                document.getElementById("empDepartment").value;
+
+                            const status =
+                                document.getElementById("empStatus").value;
+
+                            if (name === "" || email === "") {
+                                alert("Please fill all fields");
+                                return;
+                            }
+
+                            if (currentRow) {
+
+                                let id =
+                                    currentRow.cells[0].innerText;
+
+                                currentRow.cells[1].innerText = name;
+                                currentRow.cells[2].innerText = department;
+                                currentRow.cells[3].innerText = email;
+
+                                currentRow.cells[4].innerHTML =
+
+                                    `<span class="badge ${status === "Active"
+                                        ? "bg-success"
+                                        : "bg-danger"
+                                    }">
+
+${status}
+
+</span>`;
+
+                                employees.forEach(emp => {
+
+                                    if (emp.id === id) {
+
+                                        emp.name = name;
+                                        emp.department = department;
+                                        emp.email = email;
+                                        emp.status = status;
+
+                                    }
+
+                                });
+
+                                localStorage.setItem(
+                                    "employees",
+                                    JSON.stringify(employees)
+                                );
+
+                                currentRow = null;
+
+                                document.getElementById("saveEmployee")
+                                    .innerText = "Save Employee";
+
+                            }
+
+                            else {
+
+                                employeeCount++;
+                                employees.push({
+
+                                    id: "EMP00" + employeeCount,
+
+                                    name: name,
+
+                                    department: department,
+
+                                    email: email,
+
+                                    status: status
+
+                                });
+
+                                localStorage.setItem(
+                                    "employees",
+                                    JSON.stringify(employees)
+                                );
+                                const table =
+                                    document.getElementById("employeeTable");
+
+                                const row =
+                                    table.insertRow();
+
+                                row.innerHTML = `
+
+        <td>EMP00${employeeCount}</td>
+
+        <td>${name}</td>
+
+        <td>${department}</td>
+
+        <td>${email}</td>
+
+        <td>
+
+        <span class="badge ${status === "Active"
+                                        ? "bg-success"
+                                        : "bg-danger"
+                                    }">
+
+        ${status}
+
+        </span>
+
+        </td>
+
+        <td>
+
+        <button class="btn btn-warning btn-sm editBtn">
+        Edit
+        </button>
+
+        <button class="btn btn-danger btn-sm">
+        Delete
+        </button>
+
+        </td>
+
+        `;
+                            }
+
+
+                            const modal =
+                                bootstrap.Modal.getInstance(
+                                    document.getElementById("employeeModal")
+                                );
+
+                            modal.hide();
+
+                        });
+
+                </script>
+<script>
+
+if(
+localStorage.getItem("isLoggedIn")
+!== "true"
+){
+
+window.location.href =
+"login.html";
+
+}
+
+</script>
+</body>
+
+</html>
